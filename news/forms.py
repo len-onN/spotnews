@@ -1,7 +1,7 @@
 from django import forms
 
 
-class CreateNewsForm(forms.Form):
+class CreateCategoryForm(forms.Form):
     name = forms.CharField(
         max_length=200,
         label="Nome",

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from news.models import News, Category
-from news.forms import CreateNewsForm
+from news.forms import CreateCategoryForm
 
 
 # Create your views here.
@@ -15,9 +15,9 @@ def news_details(request, id):
 
 
 def news_forms(request):
-    forms = CreateNewsForm()
+    forms = CreateCategoryForm()
     if request.method == "POST":
-        forms = CreateNewsForm(request.POST)
+        forms = CreateCategoryForm(request.POST)
         if forms.is_valid():
             Category.objects.create(**forms.cleaned_data)
             return redirect("home-page")
