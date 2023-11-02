@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<div style="margin-top: 8%;">
     <h1 class="news-title">{{ news.title }}</h1>
     <p class="news-content">{{ news.content }}</p>
     {% for category in news.categories.all %}
@@ -17,4 +18,5 @@
     {% if news.image %}
         <img src="{% static news.image.url %}" alt="Imagem da notícia">
     {% endif %}
+</div>
 {% endblock %}
