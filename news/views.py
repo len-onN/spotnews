@@ -26,17 +26,14 @@ def category_forms(request):
 
 
 def new_news_forms(request):
-    forms = CreateNewsForm()
+    form = CreateNewsForm()
     if request.method == "POST":
-        forms = CreateNewsForm(request.POST, request.FILES)
-        if forms.is_valid():
-            category = forms.cleaned_data.pop("categories")
-            author_id = forms.cleaned_data['author']
-            author = User.objects.get(id=author_id)
-            news_data = forms.cleaned_data.copy()
-            news_data['author'] = author
-            news = News.objects.create(**news_data)
-            news.categories.set(category)
-            return redirect('home-page')
-    context = {"forms": forms}
-    return render(request, 'news_form.html', context)
+        form = CreateNewsForm(request.POST, request.FILES)
+        if form.is_valid():
+            category = form.cleaned_data.pop("categories")
+            data = News.objects.create(**form.cleaned_data)
+            data.categories.set(category)
+            return redirect("home-page")
+    context = {"form": form}
+    return render(request, "news_form.html", context)
+

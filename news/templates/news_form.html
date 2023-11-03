@@ -9,7 +9,7 @@
 <div style="margin-top: 8%;">
   <form method="post" action="{% url 'news-form' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ forms }}
+    {{form}}
     <button type="submit">
       Salvar
     </button>

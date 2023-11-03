@@ -18,12 +18,9 @@ class CreateNewsForm(forms.Form):
         label="Conteúdo",
         widget=forms.Textarea
     )
-    author = forms.ChoiceField(
+    author = forms.ModelChoiceField(
         label="Autoria",
-        choices=[
-                (user.id, user.name)
-                for user in User.objects.all()
-            ]
+        queryset=User.objects.all()
     )
     created_at = forms.DateField(
         label="Criado em",
