@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from news.models import News, Category, User
+from news.models import News, Category
 from news.forms import CreateCategoryForm, CreateNewsForm
 
 
@@ -36,4 +36,3 @@ def new_news_forms(request):
             return redirect("home-page")
     context = {"form": form}
     return render(request, "news_form.html", context)
-
